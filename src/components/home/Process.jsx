@@ -170,7 +170,7 @@ const Process = () => {
                                 <span className="uppercase tracking-[0.3em] text-[10px] font-bold text-[#ff751f]">Our Core Purpose</span>
                             </div>
                             <h2 className="text-4xl md:text-6xl font-black text-white leading-tight mb-8">
-                                Building <span className="text-[#005d30]">Smart</span> Marketing Systems.
+                                Building <span className="text-[#005d30] italic font-serif">Smart</span> Marketing Systems.
                             </h2>
                             <div className="space-y-4">
                                 {[

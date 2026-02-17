@@ -119,7 +119,7 @@ const About = () => {
                                 <span className="uppercase tracking-[0.4em] text-[10px] font-black text-[#ff751f]">The Advantage</span>
                             </div>
                             <h2 className="text-3xl md:text-7xl font-black text-slate-900 tracking-tighter">
-                                Why We Are <br className="hidden md:block" /> <span className="text-[#005d30]">Different.</span>
+                                Why We Are <br className="hidden md:block" /> <span className="text-[#005d30] italic font-serif">Different.</span>
                             </h2>
                         </div>
                         <p className="text-slate-400 font-bold max-w-[240px] text-[10px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] leading-loose border-l-2 border-[#ff751f] pl-6 md:pl-8">
@@ -199,7 +199,7 @@ const About = () => {
                         </motion.span>
                         <motion.h2 variants={itemVariants} className="text-3xl md:text-8xl font-black text-slate-300 leading-[1.1] mb-12 tracking-tighter">
                             Your Global <br />
-                            <span className="text-[#005d30]">Growth Engine.</span>
+                            <span className="text-[#005d30] italic font-serif">Growth Engine.</span>
                         </motion.h2>
 
                         <motion.button
