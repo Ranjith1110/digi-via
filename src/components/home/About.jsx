@@ -176,7 +176,7 @@ const About = () => {
                     initial={{ y: 50, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
                     transition={{ duration: 1 }}
-                    className="relative bg-white rounded-[40px] md:rounded-[80px] p-10 md:p-32 overflow-hidden text-center border border-slate-100 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.05)]"
+                    className="relative bg-[#02100a] rounded-[40px] md:rounded-[80px] p-10 md:p-32 overflow-hidden text-center border border-slate-100 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.05)]"
                 >
                     {/* Animated Decorative Orbs */}
                     <motion.div
@@ -197,7 +197,7 @@ const About = () => {
                         >
                             Visionary Partners
                         </motion.span>
-                        <motion.h2 variants={itemVariants} className="text-3xl md:text-8xl font-black text-slate-900 leading-[1.1] mb-12 tracking-tighter">
+                        <motion.h2 variants={itemVariants} className="text-3xl md:text-8xl font-black text-slate-300 leading-[1.1] mb-12 tracking-tighter">
                             Your Global <br />
                             <span className="text-[#005d30]">Growth Engine.</span>
                         </motion.h2>
@@ -205,7 +205,7 @@ const About = () => {
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="group relative px-8 md:px-16 py-5 md:py-7 bg-slate-900 text-white font-black rounded-full overflow-hidden transition-all shadow-xl"
+                            className="group relative px-8 md:px-16 py-5 md:py-7 bg-white font-black rounded-full overflow-hidden transition-all shadow-xl"
                         >
                             <span className="absolute inset-0 bg-[#ff751f] translate-y-full group-hover:translate-y-0 transition-transform duration-600 ease-out" />
                             <span className="relative flex items-center justify-center gap-4 md:gap-6 text-[10px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.3em]">
