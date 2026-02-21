@@ -63,6 +63,7 @@ const Process = () => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
             className="bg-[#F8F9FA] py-24 px-6 rounded-[50px] md:rounded-[100px] my-10 overflow-hidden"
+            id='why-digi-via'
         >
             <div className="max-w-7xl mx-auto">
 

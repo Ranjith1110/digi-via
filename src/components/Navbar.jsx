@@ -15,12 +15,12 @@ const Navbar = () => {
   }, []);
 
   const leftLinks = [
-    { name: 'About Us', href: '#' },
-    { name: 'Services', href: '#' },
+    { name: 'About Us', href: '#about' },
+    { name: 'Services', href: '#services' },
   ];
   const rightLinks = [
-    { name: 'Projects', href: '#' },
-    { name: 'Reviews', href: '#' },
+    { name: 'Why Digi-Via', href: '#why-digi-via' },
+    { name: 'Contact Us', href: '#contact' },
   ];
 
   return (
@@ -44,7 +44,7 @@ const Navbar = () => {
         </div>
 
         {/* Centered Logo with Glow */}
-        <div className="flex items-center group cursor-pointer relative">
+        <div className="flex items-center group cursor-pointer relative" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <div className="absolute -inset-4 bg-[#005d30]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <img 
             src={companyLogo} 

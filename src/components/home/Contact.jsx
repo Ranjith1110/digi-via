@@ -27,6 +27,7 @@ const Contact = () => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
             className="bg-white py-24 sm:py-32 px-4 sm:px-6 overflow-hidden relative"
+            id='contact'
         >
             {/* Ghost Typography Watermark */}
             <div className="absolute top-10 left-0 text-[10rem] lg:text-[18rem] font-black text-slate-50 select-none pointer-events-none tracking-tighter leading-none">

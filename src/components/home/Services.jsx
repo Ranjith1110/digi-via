@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import {
     Share2,
     Rocket,
@@ -65,26 +64,11 @@ const Services = () => {
         }
     ];
 
-    // Animation Config
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.15, delayChildren: 0.2 }
-        }
-    };
-
-    const cardVariants = {
-        hidden: { y: 40, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: { type: "spring", stiffness: 70, damping: 15 }
-        }
-    };
-
     return (
-        <section className="bg-[#02100a] py-24 px-6 relative overflow-hidden min-h-screen">
+        <section
+            id='services'
+            className="bg-[#02100a] py-24 px-6 relative overflow-hidden min-h-screen scroll-mt-20"
+        >
             {/* Dynamic Background Accents */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#005d30]/15 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#ff751f]/10 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
@@ -94,52 +78,47 @@ const Services = () => {
                 {/* Luxury Header Section */}
                 <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-24 gap-12">
                     <div className="max-w-3xl">
-                        <motion.div
-                            initial={{ width: 0 }}
-                            whileInView={{ width: 80 }}
-                            transition={{ duration: 1 }}
-                            className="h-[1px] bg-[#ff751f] mb-8"
+                        <div
+                            data-aos="stretch-right" // You can use standard fade-right if stretch isn't custom defined
+                            data-aos-delay="100"
+                            className="h-[1px] bg-[#ff751f] mb-8 w-20"
                         />
-                        <motion.span
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                        <span
+                            data-aos="fade-up"
                             className="text-[10px] uppercase tracking-[0.5em] font-bold text-[#ff751f] block mb-4"
                         >
                             Elite Digital Solutions
-                        </motion.span>
-                        <h2 className="text-5xl md:text-8xl font-black text-white leading-none tracking-tighter">
+                        </span>
+                        <h2
+                            className="text-5xl md:text-8xl font-black text-white leading-none tracking-tighter"
+                            data-aos="fade-up"
+                            data-aos-delay="200"
+                        >
                             Bespoke <br />
                             <span className="text-[#005d30] italic font-serif">Excellence.</span>
                         </h2>
                     </div>
-                    <motion.p
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8 }}
+                    <p
+                        data-aos="fade-left"
+                        data-aos-duration="1000"
                         className="text-gray-400 font-medium max-w-sm text-lg leading-relaxed border-l border-white/10 pl-8"
                     >
                         We deliver end-to-end digital systems engineered for brand visibility and measurable performance.
-                    </motion.p>
+                    </p>
                 </div>
 
                 {/* Mosaic Service Grid */}
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                >
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {services.map((service, index) => (
-                        <motion.div
+                        <div
                             key={index}
-                            variants={cardVariants}
-                            whileHover={{ y: -12 }}
-                            className={`group relative p-8 md:p-10 rounded-[40px] bg-white/[0.03] border border-white/10 backdrop-blur-md transition-all duration-700 
+                            data-aos="fade-up"
+                            data-aos-delay={index * 100}
+                            className={`group relative p-8 md:p-10 rounded-[40px] bg-white/[0.03] border border-white/10 backdrop-blur-md transition-all duration-700 hover:-translate-y-3
                 ${index === 6 ? 'lg:col-span-3 lg:flex lg:items-center lg:gap-16' : ''}`}
                         >
                             {/* Subtle Hover Gradient */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-[#005d30]/10 via-transparent to-[#ff751f]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-[#005d30]/10 via-transparent to-[#ff751f]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-[40px]" />
 
                             <div className={index === 6 ? 'lg:flex-1' : ''}>
                                 <div className="flex justify-between items-center mb-10">
@@ -173,19 +152,18 @@ const Services = () => {
                                 ))}
                             </div>
 
-                            {/* Hidden Arrow Reveal */}
+                            {/* Arrow Reveal */}
                             <div className="absolute bottom-6 right-10 opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-500">
                                 <ArrowRight className="text-[#ff751f] w-6 h-6" />
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
-                </motion.div>
+                </div>
 
                 {/* Luxury Footer CTA */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8 }}
+                <div
+                    data-aos="zoom-in"
+                    data-aos-duration="800"
                     className="mt-32 text-center relative"
                 >
                     <div className="hidden md:block absolute left-1/2 -translate-x-1/2 -bottom-10 text-white/[0.03] font-black text-[10rem] uppercase tracking-tighter select-none pointer-events-none">
@@ -194,12 +172,12 @@ const Services = () => {
 
                     <button className="group relative bg-transparent border border-white/20 px-12 py-5 rounded-full overflow-hidden transition-all hover:border-[#ff751f] active:scale-95">
                         <div className="absolute inset-0 bg-[#ff751f] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
-                        <span className="relative z-10 text-white font-black text-xs uppercase tracking-widest flex items-center gap-4">
+                        <span className="relative z-10 text-white font-black text-xs uppercase tracking-widest flex items-center gap-4 group-hover:text-white transition-colors">
                             Explore Our Portfolio
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
                         </span>
                     </button>
-                </motion.div>
+                </div>
 
             </div>
         </section>

@@ -46,10 +46,15 @@ const Hero = () => {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-white rounded-full shadow-2xl"></div>
             
             <div className="relative group">
-              <img 
-                src="/demo.jpg" 
+              {/* <img 
+                src="/digi-via.png" 
                 alt="Creativity" 
-                className="w-full max-w-md h-[500px] object-cover rounded-[40px] z-10 shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 cursor-pointer"
+                className="w-full max-w-md h-[500px] object-cover rounded-[60px] z-10 grayscale hover:grayscale-0 transition-all duration-700 cursor-pointer"
+              /> */}
+              <img 
+                src="/digi-via.png" 
+                alt="Creativity" 
+                className="w-full max-w-md h-[450px] object-cover rounded-[60px] z-10  transition-all duration-700 cursor-pointer"
               />
               
               <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex items-center bg-white/40 backdrop-blur-2xl p-2 rounded-full z-20 border border-white shadow-xl min-w-max">
