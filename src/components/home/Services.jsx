@@ -11,7 +11,7 @@ import {
     Check
 } from 'lucide-react';
 
-const Services = () => {
+const Services = ({ onStartProject }) => {
     const services = [
         {
             title: "Social Media Management",
@@ -70,8 +70,8 @@ const Services = () => {
             className="bg-[#02100a] py-24 px-6 relative overflow-hidden min-h-screen scroll-mt-20"
         >
             {/* Dynamic Background Accents */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#005d30]/15 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#ff751f]/10 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-125 h--125 bg-[#005d30]/15 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w--125 h--125 bg-[#ff751f]/10 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
             <div className="max-w-7xl mx-auto relative z-10">
 
@@ -81,7 +81,7 @@ const Services = () => {
                         <div
                             data-aos="stretch-right" // You can use standard fade-right if stretch isn't custom defined
                             data-aos-delay="100"
-                            className="h-[1px] bg-[#ff751f] mb-8 w-20"
+                            className="h-0.5 bg-[#ff751f] mb-8 w-20"
                         />
                         <span
                             data-aos="fade-up"
@@ -114,11 +114,11 @@ const Services = () => {
                             key={index}
                             data-aos="fade-up"
                             data-aos-delay={index * 100}
-                            className={`group relative p-8 md:p-10 rounded-[40px] bg-white/[0.03] border border-white/10 backdrop-blur-md transition-all duration-700 hover:-translate-y-3
+                            className={`group relative p-8 md:p-10 rounded-[40px] bg-white/3 border border-white/10 backdrop-blur-md transition-all duration-700 hover:-translate-y-3
                 ${index === 6 ? 'lg:col-span-3 lg:flex lg:items-center lg:gap-16' : ''}`}
                         >
                             {/* Subtle Hover Gradient */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-[#005d30]/10 via-transparent to-[#ff751f]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-[40px]" />
+                            <div className="absolute inset-0 bg-linear-to-br from-[#005d30]/10 via-transparent to-[#ff751f]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-[40px]" />
 
                             <div className={index === 6 ? 'lg:flex-1' : ''}>
                                 <div className="flex justify-between items-center mb-10">
@@ -166,11 +166,11 @@ const Services = () => {
                     data-aos-duration="800"
                     className="mt-32 text-center relative"
                 >
-                    <div className="hidden md:block absolute left-1/2 -translate-x-1/2 -bottom-10 text-white/[0.03] font-black text-[10rem] uppercase tracking-tighter select-none pointer-events-none">
+                    <div className="hidden md:block absolute left-1/2 -translate-x-1/2 -bottom-10 text-white/3 font-black text-[10rem] uppercase tracking-tighter select-none pointer-events-none">
                         SERVICES
                     </div>
 
-                    <button className="group relative bg-transparent border border-white/20 px-12 py-5 rounded-full overflow-hidden transition-all hover:border-[#ff751f] active:scale-95">
+                    <button onClick={onStartProject} className="group relative bg-transparent border border-white/20 px-12 py-5 rounded-full overflow-hidden transition-all hover:border-[#ff751f] active:scale-95">
                         <div className="absolute inset-0 bg-[#ff751f] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
                         <span className="relative z-10 text-white font-black text-xs uppercase tracking-widest flex items-center gap-4 group-hover:text-white transition-colors">
                             Explore Our Portfolio

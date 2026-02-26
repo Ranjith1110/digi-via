@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Hero = () => {
+const Hero = ({ onStartProject }) => {
   return (
     <section className="relative min-h-screen bg-[#F8F9FA] pt-32 pb-20 px-6 rounded-b-[50px] md:rounded-b-[80px] overflow-hidden flex flex-col justify-center">
       
@@ -11,7 +11,7 @@ const Hero = () => {
         </svg>
       </div>
       <div className="absolute bottom-20 right-10 opacity-5">
-        <div className="w-64 h-64 border-[40px] border-[#ff751f] rounded-full"></div>
+        <div className="w-64 h-64 border-40 border-[#ff751f] rounded-full"></div>
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
@@ -29,7 +29,7 @@ const Hero = () => {
           {/* Left Column: New Agency Description */}
           <div className="lg:col-span-3 space-y-8 order-2 lg:order-1">
             <div className="flex items-center gap-3">
-              <span className="h-[2px] w-12 bg-[#ff751f]"></span>
+              <span className="h-0.5 w-12 bg-[#ff751f]"></span>
               <span className="uppercase tracking-[0.3em] text-[10px] font-bold text-slate-400">Our Mission</span>
             </div>
             <p className="text-slate-600 text-lg leading-relaxed font-medium">
@@ -54,11 +54,11 @@ const Hero = () => {
               <img 
                 src="/digi-via.png" 
                 alt="Creativity" 
-                className="w-full max-w-md h-[450px] object-cover rounded-[60px] z-10  transition-all duration-700 cursor-pointer"
+                className="w-full max-w-md h-112.5 object-cover rounded-[60px] z-10  transition-all duration-700 cursor-pointer"
               />
               
               <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex items-center bg-white/40 backdrop-blur-2xl p-2 rounded-full z-20 border border-white shadow-xl min-w-max">
-                <button className="bg-[#005d30] text-white px-8 py-4 rounded-full text-[10px] font-black tracking-widest hover:bg-[#ff751f] hover:scale-105 transition-all active:scale-95 shadow-lg">
+                <button onClick={onStartProject} className="bg-[#005d30] text-white px-8 py-4 rounded-full text-[10px] font-black tracking-widest hover:bg-[#ff751f] hover:scale-105 transition-all active:scale-95 shadow-lg">
                   START PROJECT
                 </button>
                 <button className="text-slate-900 px-6 py-4 text-[10px] font-black tracking-widest hover:text-[#005d30] group flex items-center gap-2 transition-all">
@@ -71,7 +71,7 @@ const Hero = () => {
 
           {/* Right Column: Trust Signals (Unchanged) */}
           <div className="lg:col-span-3 lg:text-right space-y-10 order-3 flex flex-col items-center lg:items-end">
-            <div className="bg-white p-6 rounded-[30px] shadow-sm border border-slate-100 max-w-[200px]">
+            <div className="bg-white p-6 rounded-[30px] shadow-sm border border-slate-100 max-w-50">
                <div className="flex space-x-1 mb-3 justify-center lg:justify-end">
                 {[...Array(5)].map((_, i) => (
                   <span key={i} className="text-[#ff751f] text-sm">★</span>

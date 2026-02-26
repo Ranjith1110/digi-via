@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Target, Zap, BarChart3, TrendingUp, CheckCircle2, ArrowRight } from 'lucide-react';
 
-const Process = () => {
+const Process = ({ onStartProject }) => {
     const steps = [
         {
             title: "Strategy",
@@ -74,9 +74,9 @@ const Process = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         className="inline-flex items-center gap-3 mb-6"
                     >
-                        <span className="h-[2px] w-8 bg-[#ff751f]"></span>
+                        <span className="h-0.5 w-8 bg-[#ff751f]"></span>
                         <span className="uppercase tracking-[0.4em] text-[10px] font-black text-[#005d30]">The Methodology</span>
-                        <span className="h-[2px] w-8 bg-[#ff751f]"></span>
+                        <span className="h-0.5 w-8 bg-[#ff751f]"></span>
                     </motion.div>
                     <motion.h2
                         initial={{ opacity: 0, scale: 0.9 }}
@@ -92,14 +92,14 @@ const Process = () => {
                     {/* Animated Central Trunk (Desktop) */}
                     <motion.div
                         variants={trunkVariants}
-                        className="hidden lg:block absolute left-1/2 top-0 -translate-x-1/2 w-[2px] bg-gradient-to-b from-[#005d30] via-[#ff751f] to-[#005d30] origin-top"
+                        className="hidden lg:block absolute left-1/2 top-0 -translate-x-1/2 w-0.5 bg-linear-to-b from-[#005d30] via-[#ff751f] to-[#005d30] origin-top"
                     />
 
                     <div className="space-y-12 lg:space-y-0">
                         {steps.map((step, index) => {
                             const isEven = index % 2 === 0;
                             return (
-                                <div key={index} className="relative flex items-center justify-center lg:justify-between w-full lg:mb-[-20px]">
+                                <div key={index} className="relative flex items-center justify-center lg:justify-between w-full lg:mb-5">
 
                                     {/* Left Side Content (Even) */}
                                     <motion.div
@@ -130,7 +130,7 @@ const Process = () => {
                                             initial={{ width: 0 }}
                                             whileInView={{ width: 64 }}
                                             transition={{ duration: 0.8, delay: 0.3 }}
-                                            className={`absolute h-[2px] bg-slate-200 -z-10 ${isEven ? 'right-full' : 'left-full'}`}
+                                            className={`absolute h-0.5 bg-slate-200 -z-10 ${isEven ? 'right-full' : 'left-full'}`}
                                         />
                                     </div>
 
@@ -205,10 +205,10 @@ const Process = () => {
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="w-full group relative px-8 py-5 bg-[#005d30] text-white font-black rounded-full overflow-hidden shadow-2xl"
+                                className="w-full group relative px-8 py-5 bg-[#005d30] text-white font-black rounded-full overflow-hidden shadow-2xl" onClick={onStartProject} 
                             >
                                 <span className="absolute inset-0 bg-[#ff751f] translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
-                                <span className="relative flex items-center justify-center gap-3 tracking-[0.1em] uppercase text-xs">
+                                <span className="relative flex items-center justify-center gap-3 tracking-widest uppercase text-xs">
                                     Get Started Today
                                     <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
                                 </span>

@@ -4,7 +4,7 @@ import {
     MessageSquare, Layers, ArrowRight
 } from 'lucide-react';
 
-const About = () => {
+const About = ({ onStartProject }) => {
     const differentiators = [
         { title: "Business-first mindset", desc: "We look at your bottom line and overall ROI, not just clicks.", icon: Briefcase, featured: true },
         { title: "Clear strategies", desc: "No shortcuts. Every action is part of a high-level roadmap.", icon: Compass, featured: false },
@@ -21,7 +21,7 @@ const About = () => {
             style={{ scrollBehavior: 'smooth' }}
         >
             {/* Ghost Typography */}
-            <div className="absolute top-0 right-0 text-[8rem] md:text-[20rem] font-black text-slate-50/80 select-none pointer-events-none tracking-tighter leading-none -z-0">
+            <div className="absolute top-0 right-0 text-[8rem] md:text-[20rem] font-black text-slate-50/80 select-none pointer-events-none tracking-tighter leading-none z-0">
                 DIGI
             </div>
 
@@ -33,14 +33,14 @@ const About = () => {
                     {/* Left Column: Narrative Content */}
                     <div className="lg:col-span-6 order-2 lg:order-1">
                         <div className="flex items-center gap-4 mb-6 md:mb-8" data-aos="fade-right">
-                            <span className="h-[1.5px] bg-[#ff751f] w-[60px]" />
+                            <span className="h-[1.5px] bg-[#ff751f] w-15" />
                             <span className="uppercase tracking-[0.3em] md:tracking-[0.5em] text-[9px] md:text-[10px] font-black text-[#ff751f]">
                                 Established Growth
                             </span>
                         </div>
 
                         <h2
-                            className="text-4xl md:text-8xl font-black text-slate-900 leading-[1] md:leading-[0.9] tracking-tighter mb-8 md:mb-10"
+                            className="text-4xl md:text-8xl font-black text-slate-900 leading-none md:leading-[0.9] tracking-tighter mb-8 md:mb-10"
                             data-aos="fade-up"
                             data-aos-delay="100"
                         >
@@ -75,7 +75,7 @@ const About = () => {
                             <img src="/2.jpg" alt="Excellence" className="w-full h-[400px] md:h-[650px] object-cover group-hover:scale-110 transition-transform duration-[3s] ease-out" />
                         </div>
                         {/* CSS-only rotating border instead of framer-motion rotate */}
-                        <div className="absolute -top-6 -right-6 md:-top-12 md:-right-12 w-32 h-32 md:w-48 md:h-48 border-[2px] border-dashed border-[#ff751f]/20 rounded-full -z-10 animate-[spin_20s_linear_infinite]" />
+                        <div className="absolute -top-6 -right-6 md:-top-12 md:-right-12 w-32 h-32 md:w-48 md:h-48 border-2 border-dashed border-[#ff751f]/20 rounded-full -z-10 animate-[spin_20s_linear_infinite]" />
                     </div>
                 </div>
 
@@ -92,7 +92,7 @@ const About = () => {
                             </h2>
                         </div>
                         <p
-                            className="text-slate-400 font-bold max-w-[240px] text-[10px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] leading-loose border-l-2 border-[#ff751f] pl-6 md:pl-8"
+                            className="text-slate-400 font-bold max-w-60 text-[10px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] leading-loose border-l-2 border-[#ff751f] pl-6 md:pl-8"
                             data-aos="fade-left"
                         >
                             Innovation driven by measurable outcomes.
@@ -159,7 +159,7 @@ const About = () => {
                         </h2>
 
                         <button
-                            className="group relative px-8 md:px-16 py-5 md:py-7 bg-white font-black rounded-full overflow-hidden transition-all shadow-xl hover:scale-105 active:scale-95"
+                            onClick={onStartProject} className="group relative px-8 md:px-16 py-5 md:py-7 bg-white font-black rounded-full overflow-hidden transition-all shadow-xl hover:scale-105 active:scale-95"
                         >
                             <span className="absolute inset-0 bg-[#ff751f] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
                             <span className="relative flex items-center justify-center gap-4 md:gap-6 text-[10px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.3em] group-hover:text-white transition-colors">

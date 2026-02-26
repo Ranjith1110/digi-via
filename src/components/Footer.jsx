@@ -7,7 +7,8 @@ import {
     ArrowUpRight,
     Send,
     Globe,
-    Heart
+    Heart,
+    Facebook
 } from 'lucide-react';
 import companyLogo from '/logo.png';
 
@@ -15,23 +16,23 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     const quickLinks = [
-        { name: 'Home', href: '#' },
-        { name: 'About Us', href: '#' },
-        { name: 'Services', href: '#' },
-        { name: 'Portfolio', href: '#' },
-        { name: 'Contact', href: '#' }
+        { name: 'Home', href: '/' },
+        { name: 'About Us', href: '/about' },
+        { name: 'Services', href: '/services' },
+        { name: 'Portfolio', href: '/' },
+        { name: 'Contact', href: '/contact' }
     ];
 
     const socials = [
-        { icon: Instagram, href: '#', label: 'IG' },
-        { icon: Linkedin, href: '#', label: 'LN' },
-        { icon: Twitter, href: '#', label: 'TW' },
+        { icon: Instagram, href: 'https://www.instagram.com/digi_via', label: 'IG' },
+        { icon: Linkedin, href: 'https://www.linkedin.com/company/112436330/admin/dashboard', label: 'LN' },
+        { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61561791954807', label: 'TW' },
     ];
 
     return (
         <footer className="relative bg-[#02100a] pt-24 pb-12 px-6 overflow-hidden">
             {/* Ghost Typography Watermark - Architectural Backdrop */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[15rem] lg:text-[25rem] font-black text-white/[0.02] select-none pointer-events-none tracking-tighter leading-none whitespace-nowrap">
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[15rem] lg:text-[25rem] font-black text-white/2 select-none pointer-events-none tracking-tighter leading-none whitespace-nowrap">
                 DIGI-VIA
             </div>
 
@@ -73,7 +74,7 @@ const Footer = () => {
                             {quickLinks.map((link) => (
                                 <li key={link.name}>
                                     <a href={link.href} className="group flex items-center gap-2 text-gray-400 hover:text-white transition-colors font-bold text-sm">
-                                        <span className="w-0 group-hover:w-4 h-[1px] bg-[#005d30] transition-all duration-300" />
+                                        <span className="w-0 group-hover:w-4 h-0.5 bg-[#005d30] transition-all duration-300" />
                                         {link.name}
                                     </a>
                                 </li>
@@ -87,22 +88,22 @@ const Footer = () => {
                         <div className="space-y-6">
                             <div>
                                 <p className="text-[10px] font-black uppercase text-gray-500 mb-1">Email</p>
-                                <a href="mailto:hello@digivia.com" className="text-white font-bold hover:text-[#ff751f] transition-colors">hello@digivia.com</a>
+                                <a href="mailto:contact.digivia@gmail.com" className="text-white font-bold hover:text-[#ff751f] transition-colors">contact.digivia@gmail.com</a>
                             </div>
                             <div>
                                 <p className="text-[10px] font-black uppercase text-gray-500 mb-1">Mobile </p>
-                                <a href="tel:+919876543210" className="text-white font-bold hover:text-[#ff751f] transition-colors">+91 98765 43210</a>
+                                <a href="tel:+919876543210" className="text-white font-bold hover:text-[#ff751f] transition-colors">+91 78100 43538</a>
                             </div>
                             <div>
                                 <p className="text-[10px] font-black uppercase text-gray-500 mb-1">Office</p>
-                                <p className="text-white font-bold">India, <br />Digital Growth Center</p>
+                                <p className="text-white font-bold">Hyderabad, India, <br />Digital Growth Center</p>
                             </div>
                         </div>
                     </div>
 
                     {/* Column 4: Luxury Newsletter Suite */}
                     <div className="lg:col-span-4 space-y-8">
-                        <div className="p-8 rounded-[40px] bg-white/[0.03] border border-white/10 backdrop-blur-md relative overflow-hidden">
+                        <div className="p-8 rounded-[40px] bg-white/3 border border-white/10 backdrop-blur-md relative overflow-hidden">
                             <h4 className="text-xl font-black text-white mb-4">Elite Insights.</h4>
                             <p className="text-gray-400 text-xs font-medium mb-8 leading-loose uppercase tracking-widest">
                                 Join our exclusive circle for high-level marketing strategy.

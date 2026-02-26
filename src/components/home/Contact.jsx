@@ -168,9 +168,9 @@ const Contact = () => {
                     className="mt-20 text-center"
                 >
                     <div className="flex items-center justify-center gap-4 text-[#005d30] opacity-30">
-                        <div className="h-[1px] w-12 bg-current" />
+                        <div className="h-0.5 w-12 bg-current" />
                         <MessageCircle className="w-5 h-5" />
-                        <div className="h-[1px] w-12 bg-current" />
+                        <div className="h-0.5 w-12 bg-current" />
                     </div>
                 </motion.div>
 
