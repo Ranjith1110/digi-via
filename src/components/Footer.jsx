@@ -16,7 +16,7 @@ import companyLogo from '/logo.png';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
-    
+
     // --- Submission Logic State ---
     const [email, setEmail] = useState('');
     const [status, setStatus] = useState('idle'); // idle, loading, success, error
@@ -24,16 +24,16 @@ const Footer = () => {
     const handleSubscribe = async (e) => {
         e.preventDefault();
         setStatus('loading');
-        
+
         // REPLACE THIS WITH YOUR DEPLOYED GOOGLE APPS SCRIPT URL
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxuT9EnLzOwOeLNe3KFxyTIJVe0LJoUng2KHYLXcIQQrnaOb-kYP4DI0aqQG-c81VQ/exec";
 
         try {
             await fetch(SCRIPT_URL, {
                 method: 'POST',
-                body: JSON.stringify({ 
-                    Email: email, 
-                    formType: 'subscribe' 
+                body: JSON.stringify({
+                    Email: email,
+                    formType: 'subscribe'
                 }),
             });
             setStatus('success');
@@ -70,9 +70,9 @@ const Footer = () => {
 
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
-                    
+
                     {/* Brand Identity Column */}
-                    <div className="lg:col-span-4 space-y-8">
+                    <div className="lg:col-span-3 space-y-8">
                         <div className="flex items-center gap-3">
                             <div className="w-10 h-10 bg-[#ff751f] rounded-xl flex items-center justify-center">
                                 <Send className="text-white w-5 h-5" />
@@ -113,7 +113,7 @@ const Footer = () => {
                     </div>
 
                     {/* Column 3: Contact Details */}
-                    <div className="lg:col-span-2 space-y-8">
+                    <div className="lg:col-span-3 space-y-8">
                         <h4 className="text-[10px] uppercase font-black tracking-[0.4em] text-[#005d30]">Headquarters</h4>
                         <div className="space-y-6">
                             <div>
@@ -175,16 +175,32 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* Bottom Bar - Copyright & Localization */}
-                <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-                    <div className="flex items-center gap-6">
-                        <p className="text-gray-500 text-[10px] font-bold uppercase tracking-widest">
+                {/* Bottom Bar - Copyright & Localization & Legal Links */}
+                <div className="pt-12 border-t border-white/5 flex flex-col xl:flex-row justify-between items-center gap-8">
+                    <div className="flex flex-col md:flex-row items-center gap-6">
+                        <p className="text-gray-500 text-[10px] font-bold uppercase tracking-widest text-center">
                             © {currentYear} Digi-Via Strategy. All Rights Reserved.
                         </p>
-                        <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Crafted for Excellence</span>
-                        <div className="flex items-center gap-1 px-3 py-1 bg-[#005d30]/20 rounded-full border border-[#005d30]/30">
-                            <Globe className="w-3 h-3 text-[#005d30]" />
-                            <span className="text-[9px] font-black text-[#005d30]">IND</span>
+
+                        {/* Legal Links (Terms & Privacy) */}
+                        <div className="flex items-center gap-4">
+                            <span className="hidden md:block w-1 h-1 bg-white/20 rounded-full" />
+                            <a href="/privacy-policy" className="text-gray-500 hover:text-[#ff751f] text-[10px] font-bold uppercase tracking-widest transition-colors">
+                                Privacy Policy
+                            </a>
+                            <span className="w-1 h-1 bg-white/20 rounded-full" />
+                            <a href="/terms-conditions" className="text-gray-500 hover:text-[#ff751f] text-[10px] font-bold uppercase tracking-widest transition-colors">
+                                Terms & Conditions
+                            </a>
+                        </div>
+
+                        <div className="hidden lg:flex items-center gap-4">
+                            <span className="w-1 h-1 bg-white/20 rounded-full" />
+                            <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Crafted for Excellence</span>
+                            <div className="flex items-center gap-1 px-3 py-1 bg-[#005d30]/20 rounded-full border border-[#005d30]/30">
+                                <Globe className="w-3 h-3 text-[#005d30]" />
+                                <span className="text-[9px] font-black text-[#005d30]">IND</span>
+                            </div>
                         </div>
                     </div>
 
