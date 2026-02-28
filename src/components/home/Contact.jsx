@@ -1,9 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, MessageCircle, Sparkles, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageCircle, Sparkles, Clock, Loader2, CheckCircle2 } from 'lucide-react';
 
 const Contact = () => {
-    // Animation Variants
+    // 1. Form State Management
+    const [formData, setFormData] = useState({
+        Name: '',
+        Email: '',
+        Phone: '',
+        Message: '',
+        formType: 'contact'
+    });
+
+    const [loading, setLoading] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.id]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxuT9EnLzOwOeLNe3KFxyTIJVe0LJoUng2KHYLXcIQQrnaOb-kYP4DI0aqQG-c81VQ/exec";
+
+        try {
+            await fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify(formData),
+            });
+            setSubmitted(true);
+            setFormData({ Name: '', Email: '', Phone: '', Message: '', formType: 'contact' });
+            // Keep success message for 5 seconds
+            setTimeout(() => setSubmitted(false), 5000);
+        } catch (error) {
+            alert("Submission failed. Please check your connection.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -35,145 +72,127 @@ const Contact = () => {
             </div>
 
             <div className="max-w-7xl mx-auto relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-start">
 
-                {/* Header Section */}
-                <div className="mb-20">
-                    <motion.div variants={itemVariants} className="flex items-center gap-3 mb-6">
-                        <span className="h-[1.5px] w-12 bg-[#ff751f]" />
-                        <span className="uppercase tracking-[0.5em] text-[10px] font-black text-[#ff751f]">Get in Touch</span>
-                    </motion.div>
-                    <motion.h2 variants={itemVariants} className="text-5xl md:text-8xl font-black text-slate-900 leading-[0.9] tracking-tighter mb-8">
-                        Let’s Build Your <br />
-                        <span className="text-[#005d30] italic font-serif">Success.</span>
-                    </motion.h2>
-                    <motion.p variants={itemVariants} className="text-slate-500 max-w-xl text-lg font-medium">
-                        Have a project in mind? Ready to scale your business? We combine elite strategy with world-class execution.
-                    </motion.p>
-                </div>
+                    {/* Left Column: Contact Details */}
+                    <div className="space-y-12">
+                        <motion.div variants={itemVariants}>
+                            <h2 className="text-4xl sm:text-6xl font-black text-slate-900 leading-[0.9] tracking-tighter mb-6">
+                                READY TO SCALE? <br />
+                                <span className="text-[#005d30] italic font-serif lowercase">let's talk strategy.</span>
+                            </h2>
+                            <p className="text-slate-500 text-lg max-w-md font-medium">
+                                Stop guessing and start growing. Our team is ready to build your digital infrastructure.
+                            </p>
+                        </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-
-                    {/* Left Column: Contact Info Badges */}
-                    <motion.div variants={containerVariants} className="lg:col-span-5 space-y-8">
-                        <div className="grid grid-cols-1 gap-6">
+                        <div className="space-y-8">
                             {[
-                                { icon: Mail, label: "Email Us", val: "your@email.com", color: "text-[#ff751f]", bg: "bg-[#ff751f]/5" },
-                                { icon: Phone, label: "Call Us", val: "+91 XXXXX XXXXX", color: "text-[#005d30]", bg: "bg-[#005d30]/5" },
-                                { icon: MapPin, label: "Location", val: "India", color: "text-[#ff751f]", bg: "bg-[#ff751f]/5" },
-                            ].map((info, i) => (
-                                <motion.div
-                                    key={i}
-                                    variants={itemVariants}
-                                    whileHover={{ x: 10 }}
-                                    className="group flex items-center gap-6 p-6 rounded-[30px] border border-slate-50 bg-white shadow-[0_10px_30px_-15px_rgba(0,0,0,0.05)] transition-all cursor-default"
-                                >
-                                    <div className={`w-14 h-14 rounded-2xl ${info.bg} flex items-center justify-center transition-transform group-hover:scale-110`}>
-                                        <info.icon className={`w-6 h-6 ${info.color}`} />
+                                { icon: Mail, label: "Email", val: "contact.digivia@gmail.com", sub: "Response within 24hrs" },
+                                { icon: Phone, label: "Phone", val: "+91 78100 43538", sub: "Mon - Sat, 10am - 7pm" },
+                                { icon: MapPin, label: "Headquarters", val: "Digital Hub, India", sub: "Global Operations" }
+                            ].map((info, idx) => (
+                                <motion.div key={idx} variants={itemVariants} className="flex gap-6 group">
+                                    <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center text-[#ff751f] group-hover:bg-[#ff751f] group-hover:text-white transition-all duration-500 shadow-sm">
+                                        <info.icon className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] uppercase font-black text-slate-400 tracking-widest mb-1">{info.label}</p>
-                                        <p className="text-lg font-bold text-slate-900">{info.val}</p>
+                                        <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{info.label}</p>
+                                        <p className="text-xl font-black text-slate-900">{info.val}</p>
+                                        <p className="text-sm font-medium text-slate-400">{info.sub}</p>
                                     </div>
                                 </motion.div>
                             ))}
                         </div>
+                    </div>
 
-                        {/* High-End Response Badge */}
-                        <motion.div
-                            variants={itemVariants}
-                            className="p-8 rounded-[40px] bg-[#005d30] text-white relative overflow-hidden group shadow-2xl shadow-[#005d30]/20"
-                        >
-                            <div className="relative z-10">
-                                <div className="flex items-center gap-2 mb-4">
-                                    <Clock className="w-4 h-4 text-[#ff751f]" />
-                                    <span className="text-[10px] font-black uppercase tracking-widest text-[#ff751f]">Rapid Response</span>
-                                </div>
-                                <h4 className="text-xl font-bold mb-2 text-white">Growth doesn't wait.</h4>
-                                <p className="text-sm text-gray-300 font-medium leading-relaxed">
-                                    Our team typically responds within 2 business hours for new strategic inquiries.
-                                </p>
-                            </div>
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700" />
-                        </motion.div>
-                    </motion.div>
-
-                    {/* Right Column: The Luxury Form */}
+                    {/* Right Column: Form Container */}
                     <motion.div
                         variants={itemVariants}
-                        className="lg:col-span-7 bg-[#FCFCFC] border border-slate-100 p-8 md:p-12 rounded-[60px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] relative"
+                        className="bg-white p-8 sm:p-12 rounded-[40px] shadow-[0_40px_100px_rgba(0,0,0,0.05)] border border-slate-50 relative"
                     >
-                        <div className="absolute top-10 right-10 opacity-10">
-                            <Sparkles className="w-12 h-12 text-[#ff751f]" />
-                        </div>
-
-                        <form className="space-y-6 relative z-10">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Full Name</label>
-                                    <input
-                                        type="text"
-                                        placeholder="John Doe"
-                                        className="w-full px-8 py-4 rounded-full bg-white border border-slate-100 focus:border-[#ff751f] focus:ring-4 focus:ring-[#ff751f]/5 outline-none transition-all font-medium text-slate-900"
-                                    />
+                        {submitted ? (
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="py-20 text-center space-y-4"
+                            >
+                                <div className="w-20 h-20 bg-[#005d30]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                                    <CheckCircle2 size={40} className="text-[#005d30]" />
                                 </div>
+                                <h3 className="text-3xl font-black text-slate-900">Message Received!</h3>
+                                <p className="text-slate-500 font-medium">Our growth strategists will be in touch within 24 hours.</p>
+                                <button
+                                    onClick={() => setSubmitted(false)}
+                                    className="text-[#ff751f] font-black text-xs uppercase tracking-widest pt-4"
+                                >
+                                    Send another message
+                                </button>
+                            </motion.div>
+                        ) : (
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div className="space-y-2">
+                                        <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Full Name</label>
+                                        <input
+                                            required id="Name" value={formData.Name} onChange={handleChange}
+                                            type="text" placeholder="John Doe"
+                                            className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl text-sm focus:outline-none focus:border-[#ff751f] focus:bg-white transition-all"
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Phone Number</label>
+                                        <input
+                                            required id="Phone" value={formData.Phone} onChange={handleChange}
+                                            type="tel" placeholder="+91..."
+                                            className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl text-sm focus:outline-none focus:border-[#ff751f] focus:bg-white transition-all"
+                                        />
+                                    </div>
+                                </div>
+
                                 <div className="space-y-2">
                                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Email Address</label>
                                     <input
-                                        type="email"
-                                        placeholder="john@example.com"
-                                        className="w-full px-8 py-4 rounded-full bg-white border border-slate-100 focus:border-[#005d30] focus:ring-4 focus:ring-[#005d30]/5 outline-none transition-all font-medium text-slate-900"
+                                        required id="Email" value={formData.Email} onChange={handleChange}
+                                        type="email" placeholder="john@company.com"
+                                        className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl text-sm focus:outline-none focus:border-[#ff751f] focus:bg-white transition-all"
                                     />
                                 </div>
-                            </div>
 
-                            <div className="space-y-2">
-                                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Phone Number</label>
-                                <input
-                                    type="tel"
-                                    placeholder="+91 00000 00000"
-                                    className="w-full px-8 py-4 rounded-full bg-white border border-slate-100 focus:border-[#ff751f] focus:ring-4 focus:ring-[#ff751f]/5 outline-none transition-all font-medium text-slate-900"
-                                />
-                            </div>
+                                <div className="space-y-2">
+                                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Project Overview</label>
+                                    <textarea
+                                        required id="Message" value={formData.Message} onChange={handleChange}
+                                        placeholder="Tell us about your goals..." rows="4"
+                                        className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl text-sm focus:outline-none focus:border-[#ff751f] focus:bg-white transition-all resize-none"
+                                    ></textarea>
+                                </div>
 
-                            <div className="space-y-2">
-                                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Your Message</label>
-                                <textarea
-                                    rows="4"
-                                    placeholder="Tell us about your project goals..."
-                                    className="w-full px-8 py-6 rounded-[40px] bg-white border border-slate-100 focus:border-[#005d30] focus:ring-4 focus:ring-[#005d30]/5 outline-none transition-all font-medium text-slate-900 resize-none"
-                                />
-                            </div>
-
-                            {/* UPDATED: Signature Luxury Hover Button */}
-                            <motion.button
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                className="w-full group relative px-10 py-6 bg-[#005d30] text-white font-black rounded-full overflow-hidden transition-all shadow-[0_20px_40px_rgba(0,93,48,0.2)]"
-                            >
-                                {/* Slide-up background accent */}
-                                <span className="absolute inset-0 bg-[#ff751f] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]" />
-
-                                <span className="relative flex items-center justify-center gap-4 text-xs uppercase tracking-[0.3em]">
-                                    Send Message
-                                    <Send className="w-4 h-4 group-hover:translate-x-2 group-hover:-translate-y-1 transition-transform duration-500" />
-                                </span>
-                            </motion.button>
-                        </form>
+                                <motion.button
+                                    disabled={loading}
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    type="submit"
+                                    className="group relative w-full py-5 bg-slate-900 text-white rounded-2xl overflow-hidden shadow-xl"
+                                >
+                                    <span className="absolute inset-0 bg-[#ff751f] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+                                    <span className="relative flex items-center justify-center gap-4 text-[10px] uppercase font-black tracking-[0.3em]">
+                                        {loading ? <Loader2 className="animate-spin" size={16} /> : "Send Message"}
+                                        {!loading && <Send className="w-4 h-4" />}
+                                    </span>
+                                </motion.button>
+                            </form>
+                        )}
                     </motion.div>
                 </div>
 
-                {/* Footer Subtle Text */}
-                <motion.div
-                    variants={itemVariants}
-                    className="mt-20 text-center"
-                >
+                <motion.div variants={itemVariants} className="mt-20 text-center">
                     <div className="flex items-center justify-center gap-4 text-[#005d30] opacity-30">
                         <div className="h-0.5 w-12 bg-current" />
                         <MessageCircle className="w-5 h-5" />
                         <div className="h-0.5 w-12 bg-current" />
                     </div>
                 </motion.div>
-
             </div>
         </motion.section>
     );

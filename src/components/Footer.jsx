@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
     Instagram,
@@ -8,12 +8,44 @@ import {
     Send,
     Globe,
     Heart,
-    Facebook
+    Facebook,
+    Loader2,
+    CheckCircle
 } from 'lucide-react';
 import companyLogo from '/logo.png';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
+    
+    // --- Submission Logic State ---
+    const [email, setEmail] = useState('');
+    const [status, setStatus] = useState('idle'); // idle, loading, success, error
+
+    const handleSubscribe = async (e) => {
+        e.preventDefault();
+        setStatus('loading');
+        
+        // REPLACE THIS WITH YOUR DEPLOYED GOOGLE APPS SCRIPT URL
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxuT9EnLzOwOeLNe3KFxyTIJVe0LJoUng2KHYLXcIQQrnaOb-kYP4DI0aqQG-c81VQ/exec";
+
+        try {
+            await fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify({ 
+                    Email: email, 
+                    formType: 'subscribe' 
+                }),
+            });
+            setStatus('success');
+            setEmail('');
+            // Reset button after 3 seconds
+            setTimeout(() => setStatus('idle'), 3000);
+        } catch (error) {
+            console.error("Subscription error:", error);
+            setStatus('error');
+            setTimeout(() => setStatus('idle'), 3000);
+        }
+    };
 
     const quickLinks = [
         { name: 'Home', href: '/' },
@@ -26,55 +58,53 @@ const Footer = () => {
     const socials = [
         { icon: Instagram, href: 'https://www.instagram.com/digi_via', label: 'IG' },
         { icon: Linkedin, href: 'https://www.linkedin.com/company/112436330/admin/dashboard', label: 'LN' },
-        { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61561791954807', label: 'TW' },
+        { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61561791954807', label: 'FB' },
     ];
 
     return (
         <footer className="relative bg-[#02100a] pt-24 pb-12 px-6 overflow-hidden">
             {/* Ghost Typography Watermark - Architectural Backdrop */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[15rem] lg:text-[25rem] font-black text-white/2 select-none pointer-events-none tracking-tighter leading-none whitespace-nowrap">
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[15rem] lg:text-[25rem] font-black text-white/[0.02] select-none pointer-events-none tracking-tighter leading-none whitespace-nowrap z-0">
                 DIGI-VIA
             </div>
 
             <div className="max-w-7xl mx-auto relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 mb-20">
-
-                    {/* Column 1: Brand Essence */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
+                    
+                    {/* Brand Identity Column */}
                     <div className="lg:col-span-4 space-y-8">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            className="flex items-center gap-4"
-                        >
-                            <div className="bg-white p-2 rounded-xl w-50">
-                                <img src={companyLogo} alt="Digi-Via" className="object-contain" />
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 bg-[#ff751f] rounded-xl flex items-center justify-center">
+                                <Send className="text-white w-5 h-5" />
                             </div>
-                        </motion.div>
-                        <p className="text-gray-400 text-lg leading-relaxed max-w-sm">
-                            We don’t just build systems; we build <span className="text-white font-bold">legacies</span>. Your partner in digital dominance and scalable growth.
+                            <span className="text-2xl font-black text-white tracking-tighter uppercase">Digi-Via</span>
+                        </div>
+                        <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
+                            Architecting digital dominance through performance systems and precision execution. Join elite brands scaling with Digi-Via.
                         </p>
                         <div className="flex gap-4">
-                            {socials.map((soc, i) => (
+                            {socials.map((social, idx) => (
                                 <motion.a
-                                    key={i}
-                                    href={soc.href}
-                                    whileHover={{ y: -5, scale: 1.1 }}
-                                    className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-[#ff751f] hover:border-[#ff751f] transition-all duration-500 group"
+                                    key={idx}
+                                    href={social.href}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    whileHover={{ y: -5 }}
+                                    className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#ff751f] hover:border-[#ff751f] transition-all"
                                 >
-                                    <soc.icon className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                                    <social.icon size={18} />
                                 </motion.a>
                             ))}
                         </div>
                     </div>
 
-                    {/* Column 2: Navigation Pillar */}
+                    {/* Navigation Column */}
                     <div className="lg:col-span-2 space-y-8">
-                        <h4 className="text-[10px] uppercase font-black tracking-[0.4em] text-[#ff751f]">Navigation</h4>
+                        <h4 className="text-white font-black text-xs uppercase tracking-[0.3em]">Navigation</h4>
                         <ul className="space-y-4">
                             {quickLinks.map((link) => (
                                 <li key={link.name}>
-                                    <a href={link.href} className="group flex items-center gap-2 text-gray-400 hover:text-white transition-colors font-bold text-sm">
-                                        <span className="w-0 group-hover:w-4 h-0.5 bg-[#005d30] transition-all duration-300" />
+                                    <a href={link.href} className="text-gray-500 hover:text-[#ff751f] text-sm font-bold transition-colors">
                                         {link.name}
                                     </a>
                                 </li>
@@ -88,51 +118,69 @@ const Footer = () => {
                         <div className="space-y-6">
                             <div>
                                 <p className="text-[10px] font-black uppercase text-gray-500 mb-1">Email</p>
-                                <a href="mailto:contact.digivia@gmail.com" className="text-white font-bold hover:text-[#ff751f] transition-colors">contact.digivia@gmail.com</a>
+                                <a href="mailto:contact.digivia@gmail.com" className="text-gray-500 font-bold hover:text-[#ff751f] transition-colors">contact.digivia@gmail.com</a>
                             </div>
                             <div>
                                 <p className="text-[10px] font-black uppercase text-gray-500 mb-1">Mobile </p>
-                                <a href="tel:+919876543210" className="text-white font-bold hover:text-[#ff751f] transition-colors">+91 78100 43538</a>
+                                <a href="tel:+919876543210" className="text-gray-500 font-bold hover:text-[#ff751f] transition-colors">+91 78100 43538</a>
                             </div>
                             <div>
                                 <p className="text-[10px] font-black uppercase text-gray-500 mb-1">Office</p>
-                                <p className="text-white font-bold">Hyderabad, India, <br />Digital Growth Center</p>
+                                <p className="text-gray-500 font-bold">Hyderabad, India, <br />Digital Growth Center</p>
                             </div>
                         </div>
                     </div>
 
-                    {/* Column 4: Luxury Newsletter Suite */}
+                    {/* Newsletter Subscription Column */}
                     <div className="lg:col-span-4 space-y-8">
-                        <div className="p-8 rounded-[40px] bg-white/3 border border-white/10 backdrop-blur-md relative overflow-hidden">
-                            <h4 className="text-xl font-black text-white mb-4">Elite Insights.</h4>
-                            <p className="text-gray-400 text-xs font-medium mb-8 leading-loose uppercase tracking-widest">
-                                Join our exclusive circle for high-level marketing strategy.
-                            </p>
-
-                            <div className="relative group">
+                        <h4 className="text-white font-black text-xs uppercase tracking-[0.3em]">Stay Ahead</h4>
+                        <div className="relative max-w-md">
+                            <form onSubmit={handleSubscribe} className="relative group">
                                 <input
+                                    required
                                     type="email"
-                                    placeholder="your@email.com"
-                                    className="w-full bg-black/40 border border-white/5 rounded-full px-6 py-4 text-sm text-white focus:outline-none focus:border-[#ff751f] transition-all"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="Enter your email"
+                                    className="w-full bg-white/5 border border-white/10 rounded-full py-5 px-8 text-white focus:outline-none focus:border-[#ff751f] transition-all"
                                 />
-                                <button className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#ff751f] flex items-center justify-center text-white hover:scale-110 active:scale-90 transition-all shadow-lg shadow-[#ff751f]/20">
-                                    <Send className="w-4 h-4" />
+                                <button
+                                    disabled={status === 'loading'}
+                                    type="submit"
+                                    className="absolute right-2 top-2 bottom-2 bg-[#ff751f] text-white px-8 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all flex items-center gap-2"
+                                >
+                                    {status === 'loading' ? (
+                                        <Loader2 className="animate-spin" size={14} />
+                                    ) : status === 'success' ? (
+                                        <CheckCircle size={14} />
+                                    ) : (
+                                        'Join Now'
+                                    )}
                                 </button>
-                            </div>
+                            </form>
+                            {status === 'success' && (
+                                <p className="text-[#005d30] bg-white rounded-2xl p-3 text-[12px] font-bold mt-3 ml-4">
+                                    Subscribed successfully!
+                                </p>
+                            )}
+                            {status === 'error' && (
+                                <p className="text-red-500 text-[10px] font-bold mt-3 ml-4">
+                                    Something went wrong. Try again.
+                                </p>
+                            )}
                         </div>
+                        <p className="text-gray-600 text-[10px] font-medium leading-relaxed uppercase tracking-widest">
+                            Exclusive insights. No spam. Just growth systems delivered to your inbox.
+                        </p>
                     </div>
                 </div>
 
-                {/* Bottom Architectural Bar */}
+                {/* Bottom Bar - Copyright & Localization */}
                 <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-                    <div className="flex items-center gap-6 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
-                        <span>© {currentYear} Digi-Via</span>
-                        <span className="w-1 h-1 bg-[#ff751f] rounded-full" />
-                        <span className="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
-                        <span className="hover:text-white cursor-pointer transition-colors">Terms</span>
-                    </div>
-
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-6">
+                        <p className="text-gray-500 text-[10px] font-bold uppercase tracking-widest">
+                            © {currentYear} Digi-Via Strategy. All Rights Reserved.
+                        </p>
                         <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Crafted for Excellence</span>
                         <div className="flex items-center gap-1 px-3 py-1 bg-[#005d30]/20 rounded-full border border-[#005d30]/30">
                             <Globe className="w-3 h-3 text-[#005d30]" />
