@@ -170,13 +170,13 @@ const Services = ({ onStartProject }) => {
                         SERVICES
                     </div>
 
-                    <button onClick={onStartProject} className="group relative bg-transparent border border-white/20 px-12 py-5 rounded-full overflow-hidden transition-all hover:border-[#ff751f] active:scale-95">
+                    {/* <button onClick={onStartProject} className="group relative bg-transparent border border-white/20 px-12 py-5 rounded-full overflow-hidden transition-all hover:border-[#ff751f] active:scale-95">
                         <div className="absolute inset-0 bg-[#ff751f] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
                         <span className="relative z-10 text-white font-black text-xs uppercase tracking-widest flex items-center gap-4 group-hover:text-white transition-colors">
                             Explore Our Portfolio
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
                         </span>
-                    </button>
+                    </button> */}
                 </div>
 
             </div>

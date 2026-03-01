@@ -90,7 +90,7 @@ const Contact = () => {
                             {[
                                 { icon: Mail, label: "Email", val: "contact.digivia@gmail.com", sub: "Response within 24hrs" },
                                 { icon: Phone, label: "Phone", val: "+91 78100 43538", sub: "Mon - Sat, 10am - 7pm" },
-                                { icon: MapPin, label: "Headquarters", val: "Digital Hub, India", sub: "Global Operations" }
+                                { icon: MapPin, label: "Headquarters", val: "Hyderabad, India", sub: "Telangana" }
                             ].map((info, idx) => (
                                 <motion.div key={idx} variants={itemVariants} className="flex gap-6 group">
                                     <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center text-[#ff751f] group-hover:bg-[#ff751f] group-hover:text-white transition-all duration-500 shadow-sm">

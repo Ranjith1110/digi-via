@@ -73,7 +73,7 @@ const ContactPopup = ({ isOpen, onClose }) => {
                     ) : (
                         <>
                             <div className="mb-8 text-slate-900">
-                                <h2 className="text-3xl font-black tracking-tighter">Contact Sales</h2>
+                                <h2 className="text-3xl font-black tracking-tighter">Contact Digi Via</h2>
                                 <p className="text-slate-500 text-sm font-medium">We'll get back to you shortly.</p>
                             </div>
 

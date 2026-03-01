@@ -85,7 +85,11 @@ const AboutPage = ({ onStartProject }) => {
                         </div>
                         <h2 className="text-3xl font-black mb-4 text-slate-900">Our Mission</h2>
                         <p className="text-slate-500 leading-relaxed font-medium">
-                            To empower businesses with result-oriented digital strategies that increase brand authority, customer engagement, and sales.
+                            • Help businesses build a strong digital presence. <br />
+                            • Generate high-quality leads and conversions. <br />
+                            • Deliver innovative and scalable IT solutions. <br />
+                            • Support brands in achieving sustainable digital growth.
+
                         </p>
                     </div>
 
@@ -98,7 +102,7 @@ const AboutPage = ({ onStartProject }) => {
                         </div>
                         <h2 className="text-3xl font-black mb-4 text-slate-900">Our Vision</h2>
                         <p className="text-slate-500 leading-relaxed font-medium">
-                            To become a trusted digital growth partner for businesses worldwide by delivering innovation, transparency, and consistent outcomes.
+                            To become a trusted digital growth partner for businesses by delivering innovative marketing and technology solutions that drive measurable results.
                         </p>
                     </div>
                 </div>

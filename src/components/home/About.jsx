@@ -50,7 +50,7 @@ const About = ({ onStartProject }) => {
 
                         <div className="space-y-6 max-w-xl" data-aos="fade-up" data-aos-delay="200">
                             <p className="text-slate-600 text-lg md:text-xl leading-relaxed font-medium">
-                                Digi-Via was created with one goal: to make digital marketing <span className="text-slate-900 underline decoration-[#ff751f] decoration-4 underline-offset-8">profitable</span> for businesses.
+                                Digi-Via was created with one goal to make digital marketing <span className="text-slate-900 underline decoration-[#ff751f] decoration-4 underline-offset-8">profitable</span> for businesses.
                             </p>
                             <p className="text-slate-500 text-sm md:text-base leading-relaxed">
                                 We combine creativity with data and strategy with execution. Every campaign is built as a high-performance system to deliver ROI without compromise.

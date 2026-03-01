@@ -59,11 +59,7 @@ const Hero = ({ onStartProject }) => {
               
               <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex items-center bg-white/40 backdrop-blur-2xl p-2 rounded-full z-20 border border-white shadow-xl min-w-max">
                 <button onClick={onStartProject} className="bg-[#005d30] text-white px-8 py-4 rounded-full text-[10px] font-black tracking-widest hover:bg-[#ff751f] hover:scale-105 transition-all active:scale-95 shadow-lg">
-                  START PROJECT
-                </button>
-                <button className="text-slate-900 px-6 py-4 text-[10px] font-black tracking-widest hover:text-[#005d30] group flex items-center gap-2 transition-all">
-                  COLLABORATE
-                  <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                  COLLABORATE WITH US
                 </button>
               </div>
             </div>
@@ -77,8 +73,8 @@ const Hero = ({ onStartProject }) => {
                   <span key={i} className="text-[#ff751f] text-sm">★</span>
                 ))}
               </div>
-              <h2 className="text-4xl font-black text-slate-900">10+</h2>
-              <p className="text-slate-400 font-bold uppercase tracking-tighter text-[10px]">Years of Excellence</p>
+              <h2 className="text-4xl font-black text-slate-900">15+</h2>
+              <p className="text-slate-400 font-bold uppercase tracking-tighter text-[10px]">Trusted Brands</p>
             </div>
 
             <div className="flex -space-x-3">

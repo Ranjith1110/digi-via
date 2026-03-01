@@ -51,7 +51,6 @@ const Footer = () => {
         { name: 'Home', href: '/' },
         { name: 'About Us', href: '/about' },
         { name: 'Services', href: '/services' },
-        { name: 'Portfolio', href: '/' },
         { name: 'Contact', href: '/contact' }
     ];
 
@@ -126,7 +125,7 @@ const Footer = () => {
                             </div>
                             <div>
                                 <p className="text-[10px] font-black uppercase text-gray-500 mb-1">Office</p>
-                                <p className="text-gray-500 font-bold">Hyderabad, India, <br />Digital Growth Center</p>
+                                <p className="text-gray-500 font-bold">Hyderabad, India.</p>
                             </div>
                         </div>
                     </div>
