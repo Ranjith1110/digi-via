@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; // Added useEffect
 import ServicesPage from '../components/services/ServicesPage'
 import ContactPopup from '../components/ContactPopup'
 
 const Services = () => {
+  // Scroll to top on component mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // 1. State to manage popup visibility
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -26,7 +30,7 @@ const Services = () => {
         isOpen={isPopupOpen}
         onClose={closeContactPopup}
       />
-      
+
     </>
   )
 }

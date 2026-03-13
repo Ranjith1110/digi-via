@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; // Added useEffect
 import ContactPopup from '../components/ContactPopup'
 import ContactPage from '../components/contactus/ContactPage'
 
 const ContactUs = () => {
+  // Scroll to top on component mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // 1. State to manage popup visibility
   const [isPopupOpen, setIsPopupOpen] = useState(false);

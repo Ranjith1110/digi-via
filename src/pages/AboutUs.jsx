@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
-import AboutPage from '../components/aboutus/AboutPage'
-import ContactPopup from '../components/ContactPopup'
+import React, { useState, useEffect } from 'react'; // Added useEffect
+import AboutPage from '../components/aboutus/AboutPage';
+import ContactPopup from '../components/ContactPopup';
 
 const AboutUs = () => {
-
-    // 1. State to manage popup visibility
+    // State to manage popup visibility
     const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-    // 2. Function to open the popup
+    // FIX: Scroll to top of the page on component mount
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    // Function to open the popup
     const openContactPopup = () => {
         setIsPopupOpen(true);
     };
 
-    // 3. Function to close the popup
+    // Function to close the popup
     const closeContactPopup = () => {
         setIsPopupOpen(false);
     };
@@ -21,13 +25,13 @@ const AboutUs = () => {
         <>
             <AboutPage onStartProject={openContactPopup} />
 
-            {/* 5. The Popup Component itself */}
+            {/* The Popup Component itself */}
             <ContactPopup
                 isOpen={isPopupOpen}
                 onClose={closeContactPopup}
             />
         </>
-    )
-}
+    );
+};
 
-export default AboutUs
+export default AboutUs;
